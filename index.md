@@ -9,7 +9,7 @@ First of all I am a learner --- I like to learn.
 
 I obtained a Ph.D. in mathematics from the [Freie Universität Berlin](http://www.fu-berlin.de) under the supervision of G. Rote for the [Theoretical Computer Science Work Group](http://www.inf.fu-berlin.de/inst/ag-ti).
 During my doctoral studies I was a member of the [Berlin Mathematical School](http://www.math-berlin.de).
-Currently I work in the data science field.
+Currently I work as a data scientist at [glispa GmbH](http://www.glispa.com/), Berlin.
 
 ## Contact me
 
