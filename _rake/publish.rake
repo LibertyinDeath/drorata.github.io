@@ -24,12 +24,16 @@ task :publish => [:generate] do
     cp_r "_site/.", tmp
     cp_r "README.org", tmp
 
+    sourceHash = `git rev-parse --short source`
+    sourceHash = sourceHash.gsub("\n","")
+    sourceHash = sourceHash.gsub("\"","")
+
     pwd = Dir.pwd
     Dir.chdir tmp
 
     system "git init"
     system "git add ."
-    message = "Site updated at #{Time.now.utc}"
+    message = "Site updated at #{Time.now.utc} Related to #{sourceHash} commit on source"
     system "git commit -m #{message.inspect}"
     system "git remote add origin git@github.com:#{GITHUB_REPONAME}.git"
     system "git push origin master --force"
