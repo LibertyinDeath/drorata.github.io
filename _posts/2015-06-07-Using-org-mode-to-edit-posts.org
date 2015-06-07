@@ -1,0 +1,53 @@
+#+TITLE: Using org mode to edit posts
+#+LAYOUT: post
+#+TAGS: jekyll org-mode git
+#+CATEGORY: Blog
+
+* Introduction
+When using [[http://jekyllrb.com/][Jekyll]], I would like to use [[http://orgmode.org/][org-mode]] files. This poses
+several problems:
+- How to integrate org files in the Jekyll workflow?
+- How to play nicely with [[https://pages.github.com/][github pages]]?
+
+* Motivation
+Using org-mode is beneficial since the editing process, for me, is
+much more efficient.
+
+* Jekyll and org-mode integration
+To this end I add the [[https://github.com/eggcaker/jekyll-org.git][jekyll-org]] plugin as a sub-module in the
+~_plugins~ directory. Then a simple post file:
+
+#+BEGIN_SRC org
+#+TITLE: Using org mode to edit posts
+#+LAYOUT: post
+#+TAGS: jekyll org-mode git
+#+CATEGORY: Blog
+
+Post's content
+#+END_SRC
+
+can be easily posted.
+
+* Problem: How to publish it?
+It turn out that github pages doesn't support this plug in. Therefore,
+the way to publish the posts/blog is to push a compiled version of it;
+i.e. the content of ~_site~. I considered two options:
+
+** Ruby based
+I started an issue on the jekyll-org page. The solution suggested by
+[[https://github.com/eggcaker/jekyll-org/issues/12#issuecomment-107431938][mashdot]] is basically:
+- Move the blog development to a dedicated branch
+- Using Ruby, publish the website; in particular, build the static
+  pages and push them to `master`. This is done using a [[https://github.com/ixti/ixti.github.io/blob/source/Rakefile][script]] (which
+  can also be found in the sources of this site).
+** Git based
+I considered move the site's develop to a dedicated
+/repository/. Then, using a post-push hook build the site, copy it to
+a deployment repository and push it. I didn't try out this
+approach. The former one seems to work fine.
+* Summary
+Now, I can compose the posts in org-mode and publish the built site to
+the ~master~ branch of my git pages.
+* Open issues
+Well, the only thing at the moment is that this approach is not
+applicable when it comes to pages (see [[https://github.com/eggcaker/jekyll-org/issues/11#issuecomment-106967438][comment]]).
