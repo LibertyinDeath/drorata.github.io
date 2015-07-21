@@ -1,0 +1,25 @@
+#+TITLE: Google now predicting delay in flight
+#+LAYOUT: post
+#+TAGS: data_science google
+
+* What's happened?
+Recently, I had a flight from Berlin with EasyJet. It was supposed to
+take off at 13:10 and at 08:00 I got a [[http://www.google.co.il/landing/now/][Google Now]] notification
+informing that there's going to be a delay of one hour. Since missing
+the flight wasn't on my schedule, I checked the airport's website: no
+sign of delay. Therefore, I reached the airport on time --- the
+electronic boards did not mention any delay and everything progressed
+as planed.
+
+We boarded the plane on time, and the doors were closed on time. At that
+moment, the pilot announced that there's some traffic jam in the sky
+and we have to wait for approximately 30 minutes. Eventually we took
+off at approx. 13:50. By the way, we landed on time. I guess the pilot
+"stepped on it".
+
+Morals:
+1. I really doubt that it was a mere coincident.
+2. Google has some really strong data science. Figuring out that
+   there's going to be a delay is worthy mentioning.
+3. However, since the whole boarding process was according to the
+   plan, it is not advised to count on it. At least not for the time being...
