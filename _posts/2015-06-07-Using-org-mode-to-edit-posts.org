@@ -39,7 +39,8 @@ I started an issue on the jekyll-org page. The solution suggested by
 - Move the blog development to a dedicated branch
 - Using Ruby, publish the website; in particular, build the static
   pages and push them to `master`. This is done using a [[https://github.com/ixti/ixti.github.io/blob/source/Rakefile][script]] (which
-  can also be found in the sources of this site).
+  can also be found in the sources of this site). In practice, I
+  execute ~rake publish~ from the root directory of the website.
 ** Git based
 I considered move the site's develop to a dedicated
 /repository/. Then, using a post-push hook build the site, copy it to
