@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using org mode to edit posts</title>
+    
+    <meta name="author" content="Dror Atariah">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div>
+            <a class="pull-left" href="#"><img src="/assets/colored-spiral-of-roots.png" height="80px" width="80px"/></a>
+            <a class="navbar-brand navbar-brand-fix" href="/">Dr. Dror Atariah</a>
+          </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav navbar-brand-fix">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div class="container">
+        
+<div class="page-header">
+  <h1>Using org mode to edit posts </h1>
+</div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>07 June 2015</span>
+    </div>
+    <div class="content">
+      
+<h1>Introduction</h1>
+<p>When using <a href="http://jekyllrb.com/">Jekyll</a>, I would like to use <a href="http://orgmode.org/">org-mode</a> files. This poses
+  several problems:</p>
+<ul>
+  <li>How to integrate org files in the Jekyll workflow?</li>
+  <li>How to play nicely with <a href="https://pages.github.com/">github pages</a>?</li>
+</ul>
+<h1>Motivation</h1>
+<p>Using org-mode is beneficial since the editing process, for me, is
+  much more efficient.</p>
+<h1>Jekyll and org-mode integration</h1>
+<p>To this end I add the <a href="https://github.com/eggcaker/jekyll-org.git">jekyll-org</a> plugin as a sub-module in the
+  <code>_plugins</code> directory. Then a simple post file:</p>
+<div class="highlight"><pre>#+TITLE: Using org mode to edit posts
+#+LAYOUT: post
+#+TAGS: jekyll org-mode git
+#+CATEGORY: Blog
+
+Post&#39;s content
+</pre></div>
+<p>can be easily posted.</p>
+<h1>Problem: How to publish it?</h1>
+<p>It turn out that github pages doesn&#8217;t support this plug in. Therefore,
+  the way to publish the posts/blog is to push a compiled version of it;
+  i.e. the content of <code>_site</code>. I considered two options:</p>
+<h2>Ruby based</h2>
+<p>I started an issue on the jekyll-org page. The solution suggested by
+  <a href="https://github.com/eggcaker/jekyll-org/issues/12#issuecomment-107431938">mashdot</a> is basically:</p>
+<ul>
+  <li>Move the blog development to a dedicated branch</li>
+  <li>Using Ruby, publish the website; in particular, build the static
+    pages and push them to `master`. This is done using a <a href="https://github.com/ixti/ixti.github.io/blob/source/Rakefile">script</a> (which
+    can also be found in the sources of this site). In practice, I
+    execute <code>rake publish</code> from the root directory of the website.</li>
+</ul>
+<h2>Git based</h2>
+<p>I considered move the site&#8217;s develop to a dedicated
+  <i>repository</i>. Then, using a post-push hook build the site, copy it to
+  a deployment repository and push it. I didn&#8217;t try out this
+  approach. The former one seems to work fine.</p>
+<h1>Summary</h1>
+<p>Now, I can compose the posts in org-mode and publish the built site to
+  the <code>master</code> branch of my git pages.</p>
+<h1>Open issues</h1>
+<p>Well, the only thing at the moment is that this approach is not
+  applicable when it comes to pages (see <a href="https://github.com/eggcaker/jekyll-org/issues/11#issuecomment-106967438">comment</a>).</p>
+
+
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#blog-ref">
+    		blog <span>1</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#jekyll-ref">jekyll <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#org-mode-ref">org-mode <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#git-ref">git <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev"><a href="/2015/05/31/first-post" title="First blog post">&laquo; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next"><a href="/2015/07/21/google-now-and-flight-delay" title="Google now predicting delay in flight">Next &raquo;</a></li>
+    
+    </ul>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2015 Dror Atariah
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>
+        </p>
+      </div>
+    </div>
+
+    
+
+
+
+
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

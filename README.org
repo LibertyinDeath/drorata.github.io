@@ -1,0 +1,6 @@
+* General info
+** Serving the site
+In order to serve the site run ~jekyll serve~ and open
+~localhost:4000~.
+** Publishing the site
+~rake publish~. This uses the script in [[file:_rake/publish.rake]].

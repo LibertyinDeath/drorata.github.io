@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+        <title>Dr. Dror Atariah</title>
+        <description>Dr. Dror Atariah - Dror Atariah</description>
+        <link>http://drorata.github.io</link>
+        <atom:link href="http://drorata.github.io/rss.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Mon, 30 Nov 2015 20:50:41 +0100</lastBuildDate>
+        <pubDate>Mon, 30 Nov 2015 20:50:41 +0100</pubDate>
+        <ttl>60</ttl>
+
+
+        <item>
+                <title>Google now predicting delay in flight</title>
+                <description>
+&lt;h1&gt;What&amp;#8217;s happened?&lt;/h1&gt;
+&lt;p&gt;Recently, I had a flight from Berlin with EasyJet. It was supposed to
+  take off at 13:10 and at 08:00 I got a &lt;a href=&quot;http://www.google.co.il/landing/now/&quot;&gt;Google Now&lt;/a&gt; notification
+  informing that there&amp;#8217;s going to be a delay of one hour. Since missing
+  the flight wasn&amp;#8217;t on my schedule, I checked the airport&amp;#8217;s website: no
+  sign of delay. Therefore, I reached the airport on time &amp;#8212; the
+  electronic boards did not mention any delay and everything progressed
+  as planed.&lt;/p&gt;
+&lt;p&gt;We boarded the plane on time, and the doors were closed on time. At that
+  moment, the pilot announced that there&amp;#8217;s some traffic jam in the sky
+  and we have to wait for approximately 30 minutes. Eventually we took
+  off at approx. 13:50. By the way, we landed on time. I guess the pilot
+  &amp;#8220;stepped on it&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;Morals:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;I really doubt that it was a mere coincident.&lt;/li&gt;
+  &lt;li&gt;Google has some really strong data science. Figuring out that
+    there&amp;#8217;s going to be a delay is worthy mentioning.&lt;/li&gt;
+  &lt;li&gt;However, since the whole boarding process was according to the
+    plan, it is not advised to count on it. At least not for the time being&amp;#8230;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+</description>
+                <link>http://drorata.github.io/2015/07/21/google-now-and-flight-delay</link>
+                <guid>http://drorata.github.io/2015/07/21/google-now-and-flight-delay</guid>
+                <pubDate>Tue, 21 Jul 2015 00:00:00 +0200</pubDate>
+        </item>
+
+        <item>
+                <title>Using org mode to edit posts</title>
+                <description>
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;When using &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;, I would like to use &lt;a href=&quot;http://orgmode.org/&quot;&gt;org-mode&lt;/a&gt; files. This poses
+  several problems:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;How to integrate org files in the Jekyll workflow?&lt;/li&gt;
+  &lt;li&gt;How to play nicely with &lt;a href=&quot;https://pages.github.com/&quot;&gt;github pages&lt;/a&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Motivation&lt;/h1&gt;
+&lt;p&gt;Using org-mode is beneficial since the editing process, for me, is
+  much more efficient.&lt;/p&gt;
+&lt;h1&gt;Jekyll and org-mode integration&lt;/h1&gt;
+&lt;p&gt;To this end I add the &lt;a href=&quot;https://github.com/eggcaker/jekyll-org.git&quot;&gt;jekyll-org&lt;/a&gt; plugin as a sub-module in the
+  &lt;code&gt;_plugins&lt;/code&gt; directory. Then a simple post file:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;#+TITLE: Using org mode to edit posts
+#+LAYOUT: post
+#+TAGS: jekyll org-mode git
+#+CATEGORY: Blog
+
+Post&amp;#39;s content
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;can be easily posted.&lt;/p&gt;
+&lt;h1&gt;Problem: How to publish it?&lt;/h1&gt;
+&lt;p&gt;It turn out that github pages doesn&amp;#8217;t support this plug in. Therefore,
+  the way to publish the posts/blog is to push a compiled version of it;
+  i.e. the content of &lt;code&gt;_site&lt;/code&gt;. I considered two options:&lt;/p&gt;
+&lt;h2&gt;Ruby based&lt;/h2&gt;
+&lt;p&gt;I started an issue on the jekyll-org page. The solution suggested by
+  &lt;a href=&quot;https://github.com/eggcaker/jekyll-org/issues/12#issuecomment-107431938&quot;&gt;mashdot&lt;/a&gt; is basically:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Move the blog development to a dedicated branch&lt;/li&gt;
+  &lt;li&gt;Using Ruby, publish the website; in particular, build the static
+    pages and push them to `master`. This is done using a &lt;a href=&quot;https://github.com/ixti/ixti.github.io/blob/source/Rakefile&quot;&gt;script&lt;/a&gt; (which
+    can also be found in the sources of this site). In practice, I
+    execute &lt;code&gt;rake publish&lt;/code&gt; from the root directory of the website.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Git based&lt;/h2&gt;
+&lt;p&gt;I considered move the site&amp;#8217;s develop to a dedicated
+  &lt;i&gt;repository&lt;/i&gt;. Then, using a post-push hook build the site, copy it to
+  a deployment repository and push it. I didn&amp;#8217;t try out this
+  approach. The former one seems to work fine.&lt;/p&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;Now, I can compose the posts in org-mode and publish the built site to
+  the &lt;code&gt;master&lt;/code&gt; branch of my git pages.&lt;/p&gt;
+&lt;h1&gt;Open issues&lt;/h1&gt;
+&lt;p&gt;Well, the only thing at the moment is that this approach is not
+  applicable when it comes to pages (see &lt;a href=&quot;https://github.com/eggcaker/jekyll-org/issues/11#issuecomment-106967438&quot;&gt;comment&lt;/a&gt;).&lt;/p&gt;
+
+
+</description>
+                <link>http://drorata.github.io/blog/2015/06/07/Using-org-mode-to-edit-posts</link>
+                <guid>http://drorata.github.io/blog/2015/06/07/Using-org-mode-to-edit-posts</guid>
+                <pubDate>Sun, 07 Jun 2015 00:00:00 +0200</pubDate>
+        </item>
+
+        <item>
+                <title>First blog post</title>
+                <description>
+&lt;h1&gt;Hi&lt;/h1&gt;
+&lt;p&gt;So, this is the first post in this blog. I will try to make sure it
+  won&amp;#8217;t be the last&amp;#8230;&lt;/p&gt;
+
+
+</description>
+                <link>http://drorata.github.io/2015/05/31/first-post</link>
+                <guid>http://drorata.github.io/2015/05/31/first-post</guid>
+                <pubDate>Sun, 31 May 2015 00:00:00 +0200</pubDate>
+        </item>
+
+
+</channel>
+</rss>

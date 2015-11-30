@@ -1,0 +1,14 @@
+
+http://drorata.github.io/academic-bg.html
+http://drorata.github.io/archive.html
+http://drorata.github.io/atom.xml
+http://drorata.github.io/categories.html
+http://drorata.github.io/index.html
+http://drorata.github.io/pages.html
+http://drorata.github.io/rss.xml
+http://drorata.github.io/sitemap.txt
+http://drorata.github.io/tags.html
+
+http://drorata.github.io/2015/07/21/google-now-and-flight-delay
+http://drorata.github.io/blog/2015/06/07/Using-org-mode-to-edit-posts
+http://drorata.github.io/2015/05/31/first-post
