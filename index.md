@@ -11,6 +11,8 @@ I obtained a Ph.D. in mathematics from the [Freie Universität Berlin](http://ww
 During my doctoral studies I was a member of the [Berlin Mathematical School](http://www.math-berlin.de).
 Currently I work as a data scientist at [glispa GmbH](http://www.glispa.com/), Berlin.
 
+Further details on my academical background can be found [here](./academic-bg.html).
+
 ## Contact me
 
 * [drorata@gmail.com](mailto:drorata@gmail.com)
